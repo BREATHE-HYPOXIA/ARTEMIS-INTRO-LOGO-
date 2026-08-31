@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Modern Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0b0f19;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    /* Intro Splash Screen */
+    #intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #0b0f19;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .intro-logo {
+      width: 180px;
+      height: auto;
+      animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes logoReveal {
+      0% {
+        transform: scale(0.6);
+        opacity: 0;
+        filter: blur(10px);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    #intro-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Main Website Layout */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #f8fafc;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro Screen with Image Logo (Make sure your image file is named logo.png or change the src below) -->
+  <div id="intro-screen">
+    <img src="logo.png" alt="Brand Logo" class="intro-logo">
+  </div>
+
+  <!-- Main Website Content -->
+  <header>
+    <img src="logo.png" alt="Brand Logo" class="header-logo">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h1>Build something extraordinary today.</h1>
+    <p>A high-performance modern website template built with custom intro animations and clean code, ready to deploy instantly.</p>
+    <a href="#" class="btn">Get Started</a>
+  </main>
+
+  <!-- JavaScript for Intro Sequence -->
+  <script>
+    window.addEventListener("load", function () {
+      const introScreen = document.getElementById("intro-screen");
+      
+      setTimeout(() => {
+        introScreen.classList.add("hidden");
+      }, 1400); 
+    });
+  </script>
+
+</body>
+</html>
