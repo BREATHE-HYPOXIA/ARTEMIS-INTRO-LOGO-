@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOST-Style Intro Website</title>
+  <title>DOST-Style Wipe Intro</title>
   <style>
     * {
       margin: 0;
@@ -21,77 +21,82 @@
     /* Pitch Black Intro Screen */
     #intro-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0; /* Shorthand for top: 0, left: 0, right: 0, bottom: 0 */
       background-color: #000000;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      
+      /* Base state for the wipe effect */
+      clip-path: inset(0 0 0 0);
+      /* Animates the clip-path for a smooth left-to-right wipe */
+      transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s ease;
     }
 
-    /* Logo Wrapper to Contain the Shine Effect */
+    /* Triggered by JS: Wipes the screen from left to right */
+    #intro-screen.hidden {
+      clip-path: inset(0 0 0 100%); /* Pushes the left edge all the way to the right */
+      opacity: 0.5; /* Slight fade as it wipes */
+      pointer-events: none;
+    }
+
+    /* Logo Wrapper for the Shine Effect */
     .logo-wrapper {
       position: relative;
       display: inline-block;
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: 50%; /* Helps contain the shine to the circular boundaries of your logo */
     }
 
     .intro-logo {
-      width: 180px;
+      width: 200px;
       height: auto;
       display: block;
-      animation: smoothFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      /* Initial appearance animation */
+      animation: logoAppear 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Sleek Light Shine Sweep */
+    /* The Moving Shine Gradient */
     .logo-wrapper::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
       background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.5) 50%,
         rgba(255, 255, 255, 0) 100%
       );
-      transform: rotate(30deg) translate(-100%, -100%);
-      animation: shineSweep 1.8s ease-in-out forwards;
-      animation-delay: 0.3s;
+      transform: skewX(-25deg);
+      /* Runs the shine sweep after the logo finishes appearing */
+      animation: logoShine 1.5s ease-in-out forwards;
+      animation-delay: 0.8s; 
     }
 
-    @keyframes smoothFadeIn {
+    /* Keyframes for Appear */
+    @keyframes logoAppear {
       0% {
         opacity: 0;
-        transform: translateY(10px);
-        filter: blur(8px);
+        transform: scale(0.85);
       }
       100% {
         opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
+        transform: scale(1);
       }
     }
 
-    @keyframes shineSweep {
+    /* Keyframes for Shine */
+    @keyframes logoShine {
       0% {
-        transform: rotate(30deg) translate(-100%, -100%);
+        left: -150%;
       }
       100% {
-        transform: rotate(30deg) translate(100%, 100%);
+        left: 200%;
       }
-    }
-
-    #intro-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
     }
 
     /* Main Website Layout */
@@ -107,6 +112,7 @@
     .header-logo {
       height: 36px;
       width: auto;
+      border-radius: 50%;
     }
 
     nav a {
@@ -146,27 +152,11 @@
       margin-bottom: 2.5rem;
       line-height: 1.6;
     }
-
-    .btn {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      color: white;
-      padding: 0.75rem 2rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
-      transition: transform 0.2s, opacity 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.95;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Intro Screen with Smooth Fade & Shine Effect -->
+  <!-- Intro Screen -->
   <div id="intro-screen">
     <div class="logo-wrapper">
       <img src="Messenger_creation_5D401D20-0ED0-42E4-9952-D3425A217D30.jpeg" alt="Brand Logo" class="intro-logo">
@@ -185,77 +175,18 @@
 
   <main class="hero">
     <h1>Welcome to Your Official Site</h1>
-    <p>The intro screen now features a smooth entrance paired with a clean light shine sweep across your logo before fading into the portal.</p>
-    <a href="#" class="btn">Explore Portal</a>
+    <p>The intro screen now features a horizontal left-to-right wipe transition using CSS clip-path, perfectly mimicking professional video reveals.</p>
   </main>
 
-  <!-- JavaScript: Hides the intro screen after the animation finishes -->
+  <!-- JavaScript Setup -->
   <script>
     window.addEventListener("load", function () {
       const introScreen = document.getElementById("intro-screen");
       
+      // Waits 2.6 seconds (allowing the fade-in and shine to finish) before triggering the horizontal wipe
       setTimeout(() => {
         introScreen.classList.add("hidden");
-      }, 2400); 
-    });
-  </script>
-
-</body>
-</html>
-      font-size: 1.15rem;
-      color: #94a3b8;
-      margin-bottom: 2.5rem;
-      line-height: 1.6;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      color: white;
-      padding: 0.75rem 2rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
-      transition: transform 0.2s, opacity 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.95;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Intro Screen (Plays once on black background, then fades out) -->
-  <div id="intro-screen">
-    <img src="Messenger_creation_5D401D20-0ED0-42E4-9952-D3425A217D30.jpeg" alt="Brand Logo" class="intro-logo">
-  </div>
-
-  <!-- Main Website Content -->
-  <header>
-    <img src="Messenger_creation_5D401D20-0ED0-42E4-9952-D3425A217D30.jpeg" alt="Brand Logo" class="header-logo">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <main class="hero">
-    <h1>Welcome to Your Official Site</h1>
-    <p>Your custom splash intro now mimics the clean, single-play entry style used by government and enterprise portals.</p>
-    <a href="#" class="btn">Explore Portal</a>
-  </main>
-
-  <!-- JavaScript: Displays intro once, then hides it after 2 seconds -->
-  <script>
-    window.addEventListener("load", function () {
-      const introScreen = document.getElementById("intro-screen");
-      
-      setTimeout(() => {
-        introScreen.classList.add("hidden");
-      }, 2000); 
+      }, 2600); 
     });
   </script>
 
