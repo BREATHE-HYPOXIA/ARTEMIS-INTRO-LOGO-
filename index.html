@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOST-Style Intro Website</title>
+  <title>DOST-Style Violet & Blue Intro Website</title>
   <style>
     * {
       margin: 0;
@@ -13,16 +13,18 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #000000;
+      background: radial-gradient(circle at top center, #1e1b4b 0%, #090d16 100%);
+      background-attachment: fixed;
       color: #f8fafc;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    /* Pitch Black Intro Screen Overlay */
+    /* Deep Blue/Violet Intro Screen Overlay */
     #intro-screen {
       position: fixed;
       inset: 0;
-      background-color: #000000;
+      background: #090d16;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,12 +42,13 @@
       pointer-events: none;
     }
 
-    /* Logo Container for Light Shine Effect */
+    /* Logo Container with Violet Glow */
     .logo-wrapper {
       position: relative;
       display: inline-block;
       overflow: hidden;
       border-radius: 50%;
+      box-shadow: 0 0 35px rgba(139, 92, 246, 0.4);
     }
 
     .intro-logo {
@@ -66,7 +69,7 @@
       background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.5) 50%,
+        rgba(147, 197, 253, 0.6) 50%,
         rgba(255, 255, 255, 0) 100%
       );
       transform: skewX(-25deg);
@@ -95,24 +98,26 @@
       }
     }
 
-    /* Main Website Layout */
+    /* Header Navigation */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 5%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      background-color: #000000;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      background-color: rgba(9, 13, 22, 0.8);
+      backdrop-filter: blur(12px);
     }
 
     .header-logo {
       height: 36px;
       width: auto;
       border-radius: 50%;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
     }
 
     nav a {
-      color: #94a3b8;
+      color: #cbd5e1;
       text-decoration: none;
       margin-left: 2rem;
       font-size: 0.95rem;
@@ -120,9 +125,10 @@
     }
 
     nav a:hover {
-      color: #f8fafc;
+      color: #a855f7;
     }
 
+    /* Hero Section */
     .hero {
       display: flex;
       flex-direction: column;
@@ -140,6 +146,9 @@
       line-height: 1.1;
       margin-bottom: 1.5rem;
       letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #a855f7, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -149,19 +158,21 @@
       line-height: 1.6;
     }
 
+    /* Violet to Blue Gradient Button */
     .btn {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
+      background: linear-gradient(135deg, #8b5cf6, #2563eb);
       color: white;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 2.2rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: 600;
-      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
-      transition: transform 0.2s, opacity 0.2s;
+      box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
     }
 
     .btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.6);
       opacity: 0.95;
     }
   </style>
@@ -187,7 +198,7 @@
 
   <main class="hero">
     <h1>Welcome to Your Official Site</h1>
-    <p>A high-performance modern website template built with a DOST-style logo shine and horizontal left-to-right wipe intro.</p>
+    <p>A modern portal built with a DOST-style logo shine and left-to-right wipe intro, styled in a deep violet and electric blue theme.</p>
     <a href="#" class="btn">Explore Portal</a>
   </main>
 
@@ -201,18 +212,16 @@
       
       const introScreen = document.getElementById("intro-screen");
       if (introScreen) {
-        // Waits 2.4s for the logo fade & shine animation to complete before wiping
         setTimeout(() => {
           introScreen.classList.add("hidden");
         }, 2400);
       }
     }
 
-    // Runs immediately when DOM is ready (prevents getting stuck on slow networks)
     document.addEventListener("DOMContentLoaded", triggerWipe);
     window.addEventListener("load", triggerWipe);
 
-    // Safety fallback: forces intro screen to wipe after 4s no matter what
+    // Safety fallback timer
     setTimeout(() => {
       const introScreen = document.getElementById("intro-screen");
       if (introScreen && !introScreen.classList.contains("hidden")) {
