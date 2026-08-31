@@ -13,18 +13,19 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at top center, #1e1b4b 0%, #090d16 100%);
+      /* Rich Violet to Deep Blue Background Gradient */
+      background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 50%, #0f172a 100%);
       background-attachment: fixed;
       color: #f8fafc;
       overflow-x: hidden;
       min-height: 100vh;
     }
 
-    /* Deep Blue/Violet Intro Screen Overlay */
+    /* Vibrant Deep Violet Intro Screen Overlay */
     #intro-screen {
       position: fixed;
       inset: 0;
-      background: #090d16;
+      background: linear-gradient(135deg, #2e1065, #1e1b4b);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,13 +43,13 @@
       pointer-events: none;
     }
 
-    /* Logo Container with Violet Glow */
+    /* Logo Container with Bright Violet Glow */
     .logo-wrapper {
       position: relative;
       display: inline-block;
       overflow: hidden;
       border-radius: 50%;
-      box-shadow: 0 0 35px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 45px rgba(168, 85, 247, 0.6);
     }
 
     .intro-logo {
@@ -69,7 +70,7 @@
       background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 0%,
-        rgba(147, 197, 253, 0.6) 50%,
+        rgba(191, 219, 254, 0.8) 50%,
         rgba(255, 255, 255, 0) 100%
       );
       transform: skewX(-25deg);
@@ -104,8 +105,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 5%;
-      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-      background-color: rgba(9, 13, 22, 0.8);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+      background-color: rgba(46, 16, 101, 0.6);
       backdrop-filter: blur(12px);
     }
 
@@ -113,7 +114,7 @@
       height: 36px;
       width: auto;
       border-radius: 50%;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
     }
 
     nav a {
@@ -125,7 +126,7 @@
     }
 
     nav a:hover {
-      color: #a855f7;
+      color: #c084fc;
     }
 
     /* Hero Section */
@@ -146,33 +147,33 @@
       line-height: 1.1;
       margin-bottom: 1.5rem;
       letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #a855f7, #3b82f6);
+      background: linear-gradient(135deg, #c084fc, #60a5fa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
       font-size: 1.15rem;
-      color: #94a3b8;
+      color: #cbd5e1;
       margin-bottom: 2.5rem;
       line-height: 1.6;
     }
 
     /* Violet to Blue Gradient Button */
     .btn {
-      background: linear-gradient(135deg, #8b5cf6, #2563eb);
+      background: linear-gradient(135deg, #9333ea, #2563eb);
       color: white;
       padding: 0.75rem 2.2rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: 600;
-      box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.5);
+      box-shadow: 0 10px 30px -5px rgba(147, 51, 234, 0.6);
       transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.6);
+      box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.7);
       opacity: 0.95;
     }
   </style>
@@ -198,7 +199,7 @@
 
   <main class="hero">
     <h1>Welcome to Your Official Site</h1>
-    <p>A modern portal built with a DOST-style logo shine and left-to-right wipe intro, styled in a deep violet and electric blue theme.</p>
+    <p>A modern portal featuring a DOST-style shine reveal and horizontal wipe, set against a rich violet and blue backdrop.</p>
     <a href="#" class="btn">Explore Portal</a>
   </main>
 
